@@ -15,12 +15,14 @@ stdout.write('Hello! Leave me a message! (to exit press "exit" or ctrl+c):\n');
 
 rl.on('line', (input) => {
   if (input === 'exit') {
+    stdout.write('\nGoodbye!\n Check your message in the text.txt file');
     rl.close();
+    return;
   }
   readStream.write(input + '\n');
 });
 
 rl.on('SIGINT', () => {
-  console.log('\nGoodbye!\n Check your message in the text.txt file');
+  stdout.write('\nGoodbye!\n Check your message in the text.txt file');
   rl.close();
 });
